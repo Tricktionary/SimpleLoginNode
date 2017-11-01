@@ -1,10 +1,16 @@
+/*
+	SIMPLE SERVER SKELETON
+	Created By : Andy Bui
+*/
+var fs = require("fs");
 var express = require('express');
 var app = express();
 var hat = require('hat'); //creates random tokens
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var accountData;
+//Account Data
+var accountData = fs.readFileSync("./data/account.json");
 
 app.use(function(req,res,next){
 	console.log(req.method + " request for "+req.url);	
@@ -12,7 +18,7 @@ app.use(function(req,res,next){
 });
 
 //Login Page
-app.get(["/login","/login.html"],function(req,res){
+app.get(["/","/login","/login.html"],function(req,res){
 	res.sendFile("login.html",{root:"./views/"});
 });
 
