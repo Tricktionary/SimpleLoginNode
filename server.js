@@ -9,7 +9,9 @@ var hat = require('hat'); //creates random tokens
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var accountData = fs.readFileSync("./data/account.json");
+//user structure is: name:{pass,clicks}
+var accounts = fs.readFileSync("./data/account.json");
+
 var ROOT = "./views/";
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,10 +33,14 @@ app.post("/login",function(req,res){
 
 	console.log(username + " and " + password);
 
-	//find if they exist 
-	//if not return error
+	var user = accounts[username];	//Should Pull username
+	
+	if(!(user)){
+			
+	}else{
+		next();
+	}
 
-	//Send SUCC IF good
 });
 
 //Registration Page
