@@ -34,7 +34,8 @@ app.post("/login",function(req,res){
 	console.log(username + " and " + password);
 
 	var user = accounts[username];	//Should Pull username
-	
+	var message;
+
 	if(!(user)){
 		message = {
 				message : "User not found",
