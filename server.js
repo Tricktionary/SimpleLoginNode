@@ -1,5 +1,5 @@
 /*
-	SIMPLE SERVER SKELETON
+	SIMPLE SERVER SKELETON (NO MONGO)
 	Created By : Andy Bui
 */
 var fs = require("fs");
@@ -36,16 +36,20 @@ app.post("/login",function(req,res){
 	var user = accounts[username];	//Should Pull username
 	
 	if(!(user)){
-			
+		message = {
+				message : "User not found",
+				status: 404,
+		};
+		res.send(message);	
 	}else{
-		next();
+		res.sendFile('index.html');
 	}
 
 });
 
 //Registration Page
 app.get('/register'),function(req,res){
-	res.sendFile('register',{root:ROOT});
+	res.sendFile('register.html',{root:ROOT});
 }
 
 //Handle all static requests 

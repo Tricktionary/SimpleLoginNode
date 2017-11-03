@@ -9,7 +9,12 @@ $(document).ready(function(){
 		var password = $("#password").val();
 
 		$.post('/login',{name:username,pass:password},function(data){
-
+			if(data.status === 404){
+				$("#status").text(data.message);
+			}
+			else{
+				console.log("We're Good");
+			}
 		});
 	});
 

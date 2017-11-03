@@ -13,13 +13,38 @@
 
   		<!--CUSTOM Script-->
   		<script src="script/loginScript.js"></script>
+
+  		<!--Custom CSS -->
+  		<link rel="stylesheet" href="style/style.css">
+
 	</head>
 	<body>
-		<form>
-			Username: <input type="text" id="username"><br>
-			Password: <input type="password" id="password"><br>
-			<div id="login">Login</div><br>
-			<div id="register">Register</div>
-		</form>
+		<div class="row">
+	        <div class="col s12 m6">
+	          <div class="card blue-grey darken-1">
+	            <div class="card-content white-text">
+	            	<h1>Welcome</h1>
+	                <h3 id="status"></h3>
+	            </div>
+	          </div>
+	        </div>
+
+	        <div class="col s12 m6">
+	          <div class="card blue-grey darken-1">
+	            <div class="card-content white-text">
+	            	<form> 
+		                Username: <input type="text" id="username" ><br>
+					    Password: <input type="password" id="password"><br>
+						<div class="card-action">
+							<div id="login" class="btn">Login</div><br>
+							<div id="register" class="btn marginTop20">
+								<a href="register.html" class ="white-text">Register</a>
+							</div>
+						</div>
+					</form>
+	            </div>
+	          </div>
+	        </div>        
+      	</div>
 	</body>
 <html>

@@ -12,14 +12,34 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
   		<!--CUSTOM Script-->
+  		<script src="script/registerScript.js"></script>
+
+  		<!--CUSTOM CSS -->
+
+
 	</head>
 	<body>
-		<form>
-			Desired Username: <input type="text" name="userName"><br>
-			Desired Password: <input type="password" name="password"><br>
-			Enter Password Again : <input type="password" name="password"><br>
-			<button type="submit" id="login">Login</button><br>
-			<button type="submit" id="register">Register</button>
-		</form>
+		<div class="row"> 
+			<div class = "col s12 m6">
+				<div class = "card blue-grey darken-1">
+					<div class="card-content white-text">	
+						<h1>Register Page</h1>
+					</div>
+				</div>
+			</div>
+			<div class = "col s12 m6">
+				<div class = "card blue-grey darken-1">
+					<div class="card-content white-text">	
+						<form>
+							Desired Username: <input type="text" name="userName" id="user"><br>
+							Desired Password: <input type="password" name="password" id="pass"><br>
+							Enter Password Again : <input type="password" name="password" id="repass"><br>
+							<div class="btn" id="register">Register</div>
+							<div class="btn"><a href="login.html" class="white-text">Login</a></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 <html>
