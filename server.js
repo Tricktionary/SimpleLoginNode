@@ -39,16 +39,13 @@ app.post("/login",function(req,res){
 	var userFound = false;
 	var username = req.body.name;
 	var password = req.body.pass;
-
 	var userList = db.__wrapped__.users;
-	
 	for(var i = 0; i < userList.length; i++){
 		if(userList[i].username === username && userList[i].password === password){
 			userFound = true;
 			console.log("true");
 		}
 	}
-	
 	if(userFound===false){
 		res.send({
 				message : "User not found",
@@ -62,12 +59,14 @@ app.post("/login",function(req,res){
 				status: 200,
 		});
 	}
-
 });
 
-//Registration Page
-app.get('/register'),function(req,res){
-	res.sendFile('register.html',{root:ROOT});
+//Registration Request
+app.post('/register'),function(req,res){
+	var username = req.body.name;
+	var password = req.body.pass;
+	console.log(username);
+	console.log(password);
 }
 
 //Handle all static requests 
