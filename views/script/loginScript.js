@@ -12,8 +12,11 @@ $(document).ready(function(){
 			if(data.status === 404){
 				$("#status").text(data.message);
 			}
+			if(data.status === 200){
+				window.location.href = "index.html";
+			}
 			else{
-				console.log("We're Good");
+				console.log("IDK");
 			}
 		});
 	});
@@ -21,3 +24,9 @@ $(document).ready(function(){
 	
 });
 
+//Removes Space Keys
+function RestrictSpace() {
+    if (event.keyCode == 32) {
+        return false;
+    }
+}

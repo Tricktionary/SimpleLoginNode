@@ -9,8 +9,15 @@ var hat = require('hat'); //creates random tokens
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('./data/account.json')
+const db = low(adapter)
+
+
 //user structure is: name:{pass,clicks}
-var accounts = fs.readFileSync("./data/account.json");
+//var db = fs.readFileSync("./data/account.json");
 
 var ROOT = "./views/";
 
@@ -27,23 +34,33 @@ app.get(["/","/login","/login.html"],function(req,res){
 	res.sendFile("login.html",{root:ROOT});
 });
 
+//Loging in action
 app.post("/login",function(req,res){
+	var userFound = false;
 	var username = req.body.name;
 	var password = req.body.pass;
 
-	console.log(username + " and " + password);
-
-	var user = accounts[username];	//Should Pull username
-	var message;
-
-	if(!(user)){
-		message = {
+	var userList = db.__wrapped__.users;
+	
+	for(var i = 0; i < userList.length; i++){
+		if(userList[i].username === username && userList[i].password === password){
+			userFound = true;
+			console.log("true");
+		}
+	}
+	
+	if(userFound===false){
+		res.send({
 				message : "User not found",
 				status: 404,
-		};
-		res.send(message);	
-	}else{
-		res.sendFile('index.html');
+		});
+	}
+	else{
+		//res.sendFile('index.html',{root:ROOT});
+		res.send({
+				message : "User found",
+				status: 200,
+		});
 	}
 
 });

@@ -1,3 +1,12 @@
 {
-	
+	"users":[
+		{
+			"username":"Andy",
+			"password":"123"
+		},
+		{
+			"username":"jim",
+			"password":"eat"
+		}
+	]
 }

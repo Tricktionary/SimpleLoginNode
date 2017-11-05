@@ -31,9 +31,9 @@
 				<div class = "card blue-grey darken-1">
 					<div class="card-content white-text">	
 						<form>
-							Desired Username: <input type="text" name="userName" id="user"><br>
-							Desired Password: <input type="password" name="password" id="pass"><br>
-							Enter Password Again : <input type="password" name="password" id="repass"><br>
+							Desired Username: <input onkeypress="return RestrictSpace()" type="text" name="userName" id="user" maxlength="10"><br>
+							Desired Password: <input onkeypress="return RestrictSpace()" type="password" name="password" id="pass" maxlength="10"><br>
+							Enter Password Again : <input onkeypress="return RestrictSpace()" type="password" name="password" id="repass" maxlength="10"><br>
 							<div class="btn" id="register">Register</div>
 							<div class="btn"><a href="login.html" class="white-text">Login</a></div>
 						</form>

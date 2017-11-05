@@ -5,3 +5,10 @@ $(document).ready(function(){
 	});
 
 });
+
+//Removes Space Keys
+function RestrictSpace() {
+    if (event.keyCode == 32) {
+        return false;
+    }
+}
