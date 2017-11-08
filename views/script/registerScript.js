@@ -10,7 +10,15 @@ $(document).ready(function(){
 		}
 		else{
 			$.post('/register',{name:accountName,pass:pass},function(data){
-
+				if(data.status === 404){
+					console.log('NEIN');
+				}
+				if(data.status === 200){
+					console.log("YASS");
+				}
+				else{
+					console.log("IDK");
+				}
 			});
 		}
 	});

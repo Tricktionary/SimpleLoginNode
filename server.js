@@ -11,7 +11,6 @@ var bodyParser = require('body-parser');
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
-
 const adapter = new FileSync('./data/account.json')
 const db = low(adapter)
 
@@ -34,6 +33,14 @@ app.get(["/","/login","/login.html"],function(req,res){
 	res.sendFile("login.html",{root:ROOT});
 });
 
+//Registration Request
+app.post('/register',function(req,res){
+	var username = req.body.name;
+	var password = req.body.pass;
+	console.log(username);
+	console.log(password);
+});
+
 //Loging in action
 app.post("/login",function(req,res){
 	var userFound = false;
@@ -43,7 +50,6 @@ app.post("/login",function(req,res){
 	for(var i = 0; i < userList.length; i++){
 		if(userList[i].username === username && userList[i].password === password){
 			userFound = true;
-			console.log("true");
 		}
 	}
 	if(userFound===false){
@@ -61,13 +67,7 @@ app.post("/login",function(req,res){
 	}
 });
 
-//Registration Request
-app.post('/register'),function(req,res){
-	var username = req.body.name;
-	var password = req.body.pass;
-	console.log(username);
-	console.log(password);
-}
+ 
 
 //Handle all static requests 
 app.use(express.static(ROOT));   
