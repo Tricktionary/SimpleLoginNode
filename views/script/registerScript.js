@@ -11,13 +11,13 @@ $(document).ready(function(){
 		else{
 			$.post('/register',{name:accountName,pass:pass},function(data){
 				if(data.status === 404){
-					console.log('NEIN');
+					$("#status").text("Not Found");
 				}
 				if(data.status === 200){
-					console.log("YASS");
+					$("#status").text(data.message);
 				}
 				else{
-					console.log("IDK");
+					$("#status").text(data.message);
 				}
 			});
 		}

@@ -36,6 +36,13 @@ app.post('/register',function(req,res){
 
 	var userList = db.__wrapped__.users;
 	
+	if((username.length <4 ) || (password.length <4)){
+		res.send({
+				message : "Password or Username is too short",
+				status: 500,
+		});
+	}
+	
 	for(var i = 0 ; i < userList.length; i++){
 		if(username === userList[i].username){
 			res.send({
@@ -50,6 +57,11 @@ app.post('/register',function(req,res){
 		password : password,
 	};
 
+	res.send({
+		message : "User Has Been Registered",
+		status  : 200,
+	})
+
 	db.get("users").push(newUser).write();
 
 
@@ -62,11 +74,14 @@ app.post("/login",function(req,res){
 	var username = req.body.name;
 	var password = req.body.pass;
 	var userList = db.__wrapped__.users;
+
+
 	for(var i = 0; i < userList.length; i++){
 		if(userList[i].username === username && userList[i].password === password){
 			userFound = true;
 		}
 	}
+
 	if(userFound===false){
 		res.send({
 				message : "User not found",
