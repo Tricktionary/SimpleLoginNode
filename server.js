@@ -14,10 +14,6 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('./data/account.json')
 const db = low(adapter)
 
-
-//user structure is: name:{pass,clicks}
-//var db = fs.readFileSync("./data/account.json");
-
 var ROOT = "./views/";
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,8 +33,27 @@ app.get(["/","/login","/login.html"],function(req,res){
 app.post('/register',function(req,res){
 	var username = req.body.name;
 	var password = req.body.pass;
-	console.log(username);
-	console.log(password);
+
+	var userList = db.__wrapped__.users;
+	
+	for(var i = 0 ; i < userList.length; i++){
+		if(username === userList[i].username){
+			res.send({
+				message : "Username Already Exist",
+				status  : 500,
+			});
+		}
+	}
+
+	var newUser = {
+		username : username,
+		password : password,
+	};
+
+	db.get("users").push(newUser).write();
+
+
+	
 });
 
 //Loging in action
